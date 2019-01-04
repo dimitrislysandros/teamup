@@ -1,0 +1,11 @@
+[
+  {
+    "Name": "Test Event",
+    "Latitude": "asfda",
+    "Longitude": "adasf",
+    "EventDate": "2019-07-31",
+    "ParticipantsTeamA": 1,
+    "ChargePerPerson": 5,
+    "UserId": 1
+  }
+]
