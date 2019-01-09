@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { User } from '../_models/user';
 import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AlertifyService } from '../_services/alertify.service';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { EventService } from '../_services/event.service';
+import { Place } from '../_models/place';
+import { PlaceService } from '../_services/place.service';
 
 @Injectable()
-export class PlaceListResolver implements Resolve<Event[]> {
-    constructor( private eventService: EventService, private router: Router,
+export class PlaceDetailResolver implements Resolve<Place> {
+    constructor( private placeService: PlaceService, private router: Router,
         private alertify: AlertifyService) {}
 
-    resolve(route: ActivatedRouteSnapshot): Observable<Event[]> {
-        return this.eventService.getEvents().pipe(
+    resolve(route: ActivatedRouteSnapshot): Observable<Place> {
+        return this.placeService.getPlace(route.params['id']).pipe(
             catchError(error => {
                 this.alertify.error('problem retrieving data');
                 this.router.navigate(['/home']);

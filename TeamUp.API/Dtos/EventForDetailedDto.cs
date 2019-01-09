@@ -1,4 +1,5 @@
 using System;
+using TeamUp.API.Models;
 
 namespace TeamUp.API.Dtos
 {
@@ -6,10 +7,8 @@ namespace TeamUp.API.Dtos
     {
         public int Id {get; set;}
         public string Name {get; set;}
-        public string Latitude {get;set;}
-        public string Longitude {get;set;}
         public DateTime EventDate {get;set;}
-        public int ParticipantsTeamA {get;set;}
         public int ChargePerPerson {get;set;}
+        public Place Place{get;set;}
     }
 }

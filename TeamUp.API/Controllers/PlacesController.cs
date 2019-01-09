@@ -22,24 +22,24 @@ namespace TeamUp.API.Controllers
             _repo = repo;
         }
         
-        // [HttpGet]
-        // public async Task<IActionResult> GetPlaces()
-        // {
-        //     var placesGet = await _repo.GetPlaces();
+        [HttpGet]
+        public async Task<IActionResult> GetPlaces()
+        {
+            var placesGet = await _repo.GetPlaces();
 
-        //     var placesToReturn = _mapper.Map<IEnumerable<PlaceForListDto>>(placesGet);
+            var placesToReturn = _mapper.Map<IEnumerable<PlaceForListDto>>(placesGet);
 
-        //     return Ok(placesToReturn);
-        // }
+            return Ok(placesToReturn);
+        }
 
-        // [HttpGet("{id}")]
-        // public async Task<IActionResult> GetPlace(int id)
-        // {
-        //     var place = await _repo.GetPlace(id);
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPlace(int id)
+        {
+            var place = await _repo.GetPlace(id);
 
-        //     var placeToReturn= _mapper.Map<PlaceForDetailed>(place);
+            var placeToReturn= _mapper.Map<PlaceForDetailed>(place);
 
-        //     return Ok(placeToReturn);
-        // }
+            return Ok(placeToReturn);
+        }
     }
 }

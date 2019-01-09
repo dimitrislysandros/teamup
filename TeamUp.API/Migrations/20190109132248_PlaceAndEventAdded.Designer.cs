@@ -9,8 +9,8 @@ using TeamUp.API.Data;
 namespace TeamUp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190103131635_ExtendedUserAndEventsClass")]
-    partial class ExtendedUserAndEventsClass
+    [Migration("20190109132248_PlaceAndEventAdded")]
+    partial class PlaceAndEventAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,19 +27,13 @@ namespace TeamUp.API.Migrations
 
                     b.Property<DateTime>("EventDate");
 
-                    b.Property<string>("Latitude");
-
-                    b.Property<string>("Longitude");
-
                     b.Property<string>("Name");
 
-                    b.Property<int>("ParticipantsTeamA");
-
-                    b.Property<int>("UserId");
+                    b.Property<int>("PlaceId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("Events");
                 });
@@ -55,15 +49,73 @@ namespace TeamUp.API.Migrations
 
                     b.Property<bool>("IsMain");
 
+                    b.Property<int?>("PlaceId");
+
                     b.Property<string>("Url");
 
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PlaceId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Photos");
+                });
+
+            modelBuilder.Entity("TeamUp.API.Models.Place", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("FieldSize");
+
+                    b.Property<string>("FieldType");
+
+                    b.Property<string>("HowToBook");
+
+                    b.Property<string>("Info");
+
+                    b.Property<string>("Latitude");
+
+                    b.Property<string>("Longitude");
+
+                    b.Property<string>("Name");
+
+                    b.Property<bool>("Public");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Place");
+                });
+
+            modelBuilder.Entity("TeamUp.API.Models.PlacesPhoto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsMain");
+
+                    b.Property<int>("PlaceId");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlaceId");
+
+                    b.ToTable("PlacesPhotos");
                 });
 
             modelBuilder.Entity("TeamUp.API.Models.User", b =>
@@ -112,17 +164,29 @@ namespace TeamUp.API.Migrations
 
             modelBuilder.Entity("TeamUp.API.Models.Event", b =>
                 {
-                    b.HasOne("TeamUp.API.Models.User", "User")
+                    b.HasOne("TeamUp.API.Models.Place", "Place")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("PlaceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TeamUp.API.Models.Photo", b =>
                 {
+                    b.HasOne("TeamUp.API.Models.Place")
+                        .WithMany("PlacesPhoto")
+                        .HasForeignKey("PlaceId");
+
                     b.HasOne("TeamUp.API.Models.User", "User")
                         .WithMany("Photos")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TeamUp.API.Models.PlacesPhoto", b =>
+                {
+                    b.HasOne("TeamUp.API.Models.Place", "Place")
+                        .WithMany()
+                        .HasForeignKey("PlaceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

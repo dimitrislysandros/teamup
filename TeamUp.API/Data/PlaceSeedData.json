@@ -1,0 +1,42 @@
+[
+  {
+    "Name": "Patinoire Barradels",
+    "Country": "France",
+    "City": "Toulouse",
+    "Address": "",
+    "HowToBook":"You don't need to book",
+    "Info": "Information here",
+    "Latitude": "43.6409687",
+    "Longitude": "1.3784778",
+    "FieldType": "Synthetic grass",
+    "FieldSize": "Football 7",
+    "Public": true,
+    "PlacesPhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/85.jpg",
+        "isMain": true,
+        "description": "Velit ipsum ea fugiat est voluptate aute laborum sit."
+      }
+    ]
+  },
+  {
+    "Name": "Bonito Sports",
+    "Country": "France",
+    "City": "Toulouse",
+    "Address": "Address here",
+    "HowToBook":"Call on 01234567",
+    "Info": "Information here",
+    "Latitude": "43.6558594",
+    "Longitude": "1.3765616",
+    "FieldType": "Synthetic grass",
+    "FieldSize": "Football 5",
+    "Public": false,
+    "PlacesPhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/85.jpg",
+        "isMain": true,
+        "description": "Velit ipsum ea fugiat est voluptate aute laborum sit."
+      }
+    ]
+  }
+]

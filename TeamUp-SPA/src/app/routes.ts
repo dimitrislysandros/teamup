@@ -10,6 +10,8 @@ import { EventDetailComponent } from './events/event-detail/event-detail.compone
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { EventDetailResolver } from './_resolvers/event-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -22,6 +24,7 @@ export const appRoutes: Routes = [
                 resolve: {users: MemberListResolver}  },
             { path: 'players/:id', component: MemberDetailComponent,
                 resolve: {user: MemberDetailResolver} },
+            { path: 'player/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver}},
             { path: 'messages', component: MessagesComponent },
             { path: 'lists', component: ListsComponent },
             { path: 'events', component: EventsComponent },

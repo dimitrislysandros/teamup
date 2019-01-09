@@ -29,6 +29,11 @@ import { EventCreateComponent } from './events/event-create/event-create.compone
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { EventDetailResolver } from './_resolvers/event-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { PlaceService } from './_services/place.service';
+import { PlaceListComponent } from './places/place-list/place-list.component';
+import { PlaceDetailComponent } from './places/place-detail/place-detail.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -48,6 +53,9 @@ export function tokenGetter() {
       MemberDetailComponent,
       EventDetailComponent,
       EventCreateComponent,
+      PlaceListComponent,
+      PlaceDetailComponent,
+      MemberEditComponent
    ],
    imports: [
       BrowserModule,
@@ -74,7 +82,9 @@ export function tokenGetter() {
       EventService,
       MemberDetailResolver,
       MemberListResolver,
-      EventDetailResolver
+      EventDetailResolver,
+      PlaceService,
+      MemberEditResolver
    ],
    bootstrap: [
       AppComponent

@@ -3,7 +3,8 @@ import { EventService } from 'src/app/_services/event.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Event } from 'src/app/_models/event';
-import { strictEqual } from 'assert';
+import { Place } from 'src/app/_models/place';
+import { PlaceService } from 'src/app/_services/place.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -12,13 +13,16 @@ import { strictEqual } from 'assert';
 })
 export class EventDetailComponent implements OnInit {
   event: Event;
-  constructor(private eventService: EventService, private alertify: AlertifyService,
+  place: Place;
+  constructor(private eventService: EventService, private placeService: PlaceService, private alertify: AlertifyService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.event = data['event'];
     });
+
+    this.place = this.event.place;
   }
 
   // loadEvent() {

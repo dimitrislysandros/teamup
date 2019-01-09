@@ -1,29 +1,27 @@
 [
   {
     "Name": "Test Event",
-    "Latitude": "asfda",
-    "Longitude": "adasf",
     "EventDate": "2019-07-31",
-    "ParticipantsTeamA": 1,
-    "ChargePerPerson": 5,
-    "UserId": 1
+    "ChargePerPerson": 0,
+    "PlaceId": 1
   },
   {
     "Name": "Test Event 2",
-    "Latitude": "asfda",
-    "Longitude": "adasf",
     "EventDate": "2019-07-31",
-    "ParticipantsTeamA": 1,
-    "ChargePerPerson": 5,
-    "UserId": 1
+    "ChargePerPerson": 8,
+    "PlaceId": 2
   },
   {
     "Name": "Test Event 3",
-    "Latitude": "asfda",
-    "Longitude": "adasf",
     "EventDate": "2019-07-31",
-    "ParticipantsTeamA": 1,
-    "ChargePerPerson": 5,
-    "UserId": 1
+    "ChargePerPerson": 0,
+    "PlaceId": 1
+  },
+  
+  {
+    "Name": "Test Event 4",
+    "EventDate": "2019-07-31",
+    "ChargePerPerson": 0,
+    "PlaceId": 1
   }
 ]

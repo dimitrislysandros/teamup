@@ -1,6 +1,7 @@
 [
     {
       "Username": "Jim",
+      "Name": "Jim",
       "Gender": "male",
       "DateOfBirth": "1995-09-19",
       "Password": "password",
@@ -15,7 +16,8 @@
       ]
     },
     {
-      "Username": "Mccormick",
+      "Username": "BigMac",
+      "Name": "McCormick",
       "Gender": "male",
       "DateOfBirth": "1984-08-15",
       "Password": "password",
@@ -23,14 +25,15 @@
       "LastActive": "2017-01-23",
       "Photos": [
         {
-          "url": "https://randomuser.me/api/portraits/women/29.jpg",
+          "url": "https://randomuser.me/api/portraits/men/29.jpg",
           "isMain": true,
           "description": "Est tempor incididunt ipsum aliquip sit et occaecat excepteur."
         }
       ]
     },
     {
-      "Username": "Shaffer",
+      "Username": "5taffer",
+      "Name": "Shaffer",
       "Gender": "male",
       "DateOfBirth": "1964-05-25",
       "Password": "password",
@@ -38,14 +41,15 @@
       "LastActive": "2017-03-21",
       "Photos": [
         {
-          "url": "https://randomuser.me/api/portraits/women/25.jpg",
+          "url": "https://randomuser.me/api/portraits/men/25.jpg",
           "isMain": true,
           "description": "Ea fugiat voluptate pariatur laborum exercitation."
         }
       ]
     },
     {
-      "Username": "Wilkins",
+      "Username": "w1lkins",
+      "Νame": "Wilkins",
       "Gender": "male",
       "DateOfBirth": "1964-03-25",
       "Password": "password",
@@ -53,14 +57,15 @@
       "LastActive": "2017-02-28",
       "Photos": [
         {
-          "url": "https://randomuser.me/api/portraits/women/85.jpg",
+          "url": "https://randomuser.me/api/portraits/men/85.jpg",
           "isMain": true,
           "description": "Velit ipsum ea fugiat est voluptate aute laborum sit."
         }
       ]
     },
     {
-      "Username": "Oliver",
+      "Username": "Oiler",
+      "Name": "Oliver",
       "Gender": "male",
       "DateOfBirth": "1964-04-23",
       "Password": "password",
@@ -68,7 +73,7 @@
       "LastActive": "2017-05-12",
       "Photos": [
         {
-          "url": "https://randomuser.me/api/portraits/women/4.jpg",
+          "url": "https://randomuser.me/api/portraits/men/4.jpg",
           "isMain": true,
           "description": "Pariatur eiusmod aute proident pariatur."
         }

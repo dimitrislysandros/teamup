@@ -14,8 +14,9 @@ namespace TeamUp.API.Models
         public string Latitude {get;set;}
         public string Longitude {get;set;}
         public string FieldType {get;set;}
+        public string FieldSize {get;set;}
         public bool Public {get;set;}
-        public ICollection<Photo> PlacesPhoto  {get; set;}
+        public ICollection<PlacesPhoto> PlacesPhoto  {get; set;}
     
     }
 }

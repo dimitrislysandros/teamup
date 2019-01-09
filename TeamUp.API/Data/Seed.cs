@@ -12,6 +12,17 @@ namespace TeamUp.API.Data
             _context = context;
         }
 
+        public void SeedPlaces()
+        {
+            var placeData=System.IO.File.ReadAllText("Data/PlaceSeedData.json");
+            var placesToAdd = JsonConvert.DeserializeObject<List<Place>>(placeData);
+            foreach (var placeTA in placesToAdd)
+            {
+                _context.Place.Add(placeTA);
+            }
+
+            _context.SaveChanges();
+        }
         public void SeedEvents()
         {
             var eventData=System.IO.File.ReadAllText("Data/EventSeedData.json");
