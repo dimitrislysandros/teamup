@@ -45,12 +45,27 @@ namespace TeamUp.API.Data
             return user;
         }
 
+        // public async Task<Place> GetPlace(int id)
+        // {
+        //      var place= await _context.Place.Include(p => p.PlacesPhoto).
+        //         FirstOrDefaultAsync(u => u.Id == id);
+
+        //      return place;
+        // }
+
         public async Task<IEnumerable<User>> GetUsers()
         {
             var users = await _context.Users.Include(p => p.Photos).ToListAsync();
 
             return users;
         }
+
+        // public async Task<IEnumerable<Place>> GetPlaces()
+        // {
+        //     var places = await _context.Place.Include(p => p.PlacesPhoto).ToListAsync();
+
+        //     return places;
+        // }
 
         public async Task<bool> SaveAll()
         {

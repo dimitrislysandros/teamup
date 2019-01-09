@@ -14,5 +14,7 @@ namespace TeamUp.API.Data
         public DbSet<Photo> Photos {get;set;}
 
         public DbSet<Event> Events {get;set;}
+        // public DbSet<Place> Place {get;set;}
+        // public DbSet<PlacesPhoto> PlacesPhotos {get;set;}
     }
 }

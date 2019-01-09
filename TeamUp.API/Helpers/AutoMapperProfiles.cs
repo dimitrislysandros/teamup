@@ -26,6 +26,15 @@ namespace TeamUp.API.Helpers
             CreateMap<Photo, PhotosForDetailedDto>();
             CreateMap<Event, EventForListDto>();
             CreateMap<Event, EventForDetailedDto>();
+            CreateMap<Place, PlaceForListDto>()
+                .ForMember(dest => dest.PhotoUrl, opt => {
+                    opt.MapFrom(src => src.PlacesPhoto.FirstOrDefault(p => p.IsMain).Url);
+                });
+            CreateMap<Place, PlaceForDetailed>()
+                .ForMember(dest => dest.PhotoUrl, opt => {
+                    opt.MapFrom(src => src.PlacesPhoto.FirstOrDefault(p => p.IsMain).Url);
+                });
+            CreateMap<PlacesPhoto, PlacePhotosForDetailedDto>();
         }
     }
 }

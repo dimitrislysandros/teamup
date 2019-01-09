@@ -7,5 +7,23 @@
     "ParticipantsTeamA": 1,
     "ChargePerPerson": 5,
     "UserId": 1
+  },
+  {
+    "Name": "Test Event 2",
+    "Latitude": "asfda",
+    "Longitude": "adasf",
+    "EventDate": "2019-07-31",
+    "ParticipantsTeamA": 1,
+    "ChargePerPerson": 5,
+    "UserId": 1
+  },
+  {
+    "Name": "Test Event 3",
+    "Latitude": "asfda",
+    "Longitude": "adasf",
+    "EventDate": "2019-07-31",
+    "ParticipantsTeamA": 1,
+    "ChargePerPerson": 5,
+    "UserId": 1
   }
 ]

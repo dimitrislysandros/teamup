@@ -11,7 +11,9 @@ namespace TeamUp.API.Data
          Task<bool> SaveAll();
          Task<IEnumerable<User>> GetUsers();
          Task<IEnumerable<Event>> GetEvents();
+        //  Task<IEnumerable<Place>> GetPlaces();
          Task<User> GetUser(int id);
          Task<Event> GetEvent(int id);
+        //  Task<Place> GetPlace(int id);
     }
 }
