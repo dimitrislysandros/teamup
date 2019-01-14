@@ -21,16 +21,15 @@ export class EventDetailComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.event = data['event'];
     });
-
-    this.place = this.event.place;
+    this.loadPlace();
   }
 
-  // loadEvent() {
-  //   this.eventService.getEvent(+this.route.snapshot.params['id'])
-  //     .subscribe((event: Event) => {
-  //       this.event = event;
-  //     }, error => {
-  //       this.alertify.error(error);
-  //     });
-  // }
+  loadPlace() {
+    this.placeService.getPlace(+this.event.placeId)
+      .subscribe((place: Place) => {
+        this.place = place;
+      }, error => {
+        this.alertify.error(error);
+      });
+  }
 }

@@ -6,6 +6,7 @@ import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -34,6 +35,10 @@ import { PlaceListComponent } from './places/place-list/place-list.component';
 import { PlaceDetailComponent } from './places/place-detail/place-detail.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { PlaceDetailResolver } from './_resolvers/place-detail.resolver';
+import { EventListResolver } from './_resolvers/events.resolver';
+import { PlaceListResolver } from './_resolvers/place-list.resolver';
+import { MapComponent } from './map/map.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -55,10 +60,14 @@ export function tokenGetter() {
       EventCreateComponent,
       PlaceListComponent,
       PlaceDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      MapComponent
    ],
    imports: [
       BrowserModule,
+      AgmCoreModule.forRoot({
+         apiKey: 'AIzaSyBd8BuVyxKOotJ_WLW71oLS5SKXE578UzI'
+       }),
       HttpClientModule,
       FormsModule,
       BsDropdownModule.forRoot(),
@@ -83,8 +92,11 @@ export function tokenGetter() {
       MemberDetailResolver,
       MemberListResolver,
       EventDetailResolver,
+      EventListResolver,
       PlaceService,
-      MemberEditResolver
+      MemberEditResolver,
+      PlaceDetailResolver,
+      PlaceListResolver
    ],
    bootstrap: [
       AppComponent

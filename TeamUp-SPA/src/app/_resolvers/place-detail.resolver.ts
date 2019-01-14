@@ -8,16 +8,19 @@ import { PlaceService } from '../_services/place.service';
 
 @Injectable()
 export class PlaceDetailResolver implements Resolve<Place> {
-    constructor( private placeService: PlaceService, private router: Router,
-        private alertify: AlertifyService) {}
+  constructor(
+    private placeService: PlaceService,
+    private router: Router,
+    private alertify: AlertifyService
+  ) {}
 
-    resolve(route: ActivatedRouteSnapshot): Observable<Place> {
-        return this.placeService.getPlace(route.params['id']).pipe(
-            catchError(error => {
-                this.alertify.error('problem retrieving data');
-                this.router.navigate(['/home']);
-                return of(null);
-            })
-        );
-    }
+  resolve(route: ActivatedRouteSnapshot): Observable<Place> {
+    return this.placeService.getPlace(route.params['id']).pipe(
+      catchError(error => {
+        this.alertify.error('problem retrieving data');
+        this.router.navigate(['/places']);
+        return of(null);
+      })
+    );
+  }
 }

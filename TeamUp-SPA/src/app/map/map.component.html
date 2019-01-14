@@ -1,0 +1,6 @@
+<agm-map [latitude]="43.6006786" [longitude]="1.3628012" [zoom]="10">
+
+<div *ngFor="let place of places" class="container">
+    <agm-marker [latitude]="place.latitude" [longitude]="place.longitude" [label]="place.name"></agm-marker>
+ </div>
+</agm-map>

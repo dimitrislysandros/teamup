@@ -10,14 +10,18 @@ import { Place } from 'src/app/_models/place';
   styleUrls: ['./place-list.component.css']
 })
 export class PlaceListComponent implements OnInit {
-  place: Place;
-  constructor(private placeService: PlaceService, private alertify: AlertifyService,
-    private route: ActivatedRoute) { }
+  places: Place[];
+  constructor(
+    private placeService: PlaceService,
+    private alertify: AlertifyService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.place = data ['places'];
+      this.places = data['places'];
+    }, error => {
+      this.alertify.error(error);
     });
   }
-
 }

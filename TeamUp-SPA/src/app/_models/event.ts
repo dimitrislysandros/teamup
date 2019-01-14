@@ -7,4 +7,7 @@ export interface Event {
     chargePerPerson: number;
     placeId: number;
     place: Place;
+    placeName: string;
+    placeLatitude: number;
+    placeLongitude: number;
 }

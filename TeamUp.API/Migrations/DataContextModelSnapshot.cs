@@ -29,6 +29,12 @@ namespace TeamUp.API.Migrations
 
                     b.Property<int>("PlaceId");
 
+                    b.Property<double>("PlaceLatitude");
+
+                    b.Property<double>("PlaceLongitude");
+
+                    b.Property<string>("PlaceName");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PlaceId");
@@ -47,15 +53,11 @@ namespace TeamUp.API.Migrations
 
                     b.Property<bool>("IsMain");
 
-                    b.Property<int?>("PlaceId");
-
                     b.Property<string>("Url");
 
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PlaceId");
 
                     b.HasIndex("UserId");
 
@@ -81,9 +83,9 @@ namespace TeamUp.API.Migrations
 
                     b.Property<string>("Info");
 
-                    b.Property<string>("Latitude");
+                    b.Property<double>("Latitude");
 
-                    b.Property<string>("Longitude");
+                    b.Property<double>("Longitude");
 
                     b.Property<string>("Name");
 
@@ -170,10 +172,6 @@ namespace TeamUp.API.Migrations
 
             modelBuilder.Entity("TeamUp.API.Models.Photo", b =>
                 {
-                    b.HasOne("TeamUp.API.Models.Place")
-                        .WithMany("PlacesPhoto")
-                        .HasForeignKey("PlaceId");
-
                     b.HasOne("TeamUp.API.Models.User", "User")
                         .WithMany("Photos")
                         .HasForeignKey("UserId")
@@ -183,7 +181,7 @@ namespace TeamUp.API.Migrations
             modelBuilder.Entity("TeamUp.API.Models.PlacesPhoto", b =>
                 {
                     b.HasOne("TeamUp.API.Models.Place", "Place")
-                        .WithMany()
+                        .WithMany("PlacesPhoto")
                         .HasForeignKey("PlaceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

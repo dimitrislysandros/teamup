@@ -1,4 +1,4 @@
-import { Photo } from './photo';
+import { PlacesPhoto } from './placesPhoto';
 
 export interface Place {
   id: number;
@@ -8,10 +8,10 @@ export interface Place {
   address: string;
   howToBook: string;
   info: string;
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
   fieldType: string;
   fieldSize: string;
   public: boolean;
-  photos?: Photo[];
+  photos?: PlacesPhoto[];
 }

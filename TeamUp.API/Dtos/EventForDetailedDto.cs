@@ -10,5 +10,9 @@ namespace TeamUp.API.Dtos
         public DateTime EventDate {get;set;}
         public int ChargePerPerson {get;set;}
         public Place Place{get;set;}
+        public int PlaceId {get;set;}
+        public string PlaceName {get;set;}
+        public double PlaceLatitude {get;set;}
+        public double PlaceLongitude {get;set;}
     }
 }

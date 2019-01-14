@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { Place } from '../_models/place';
 import { PlaceService } from '../_services/place.service';
 @Injectable()
-export class MemberListResolver implements Resolve<Place[]> {
+export class PlaceListResolver implements Resolve<Place[]> {
     constructor( private placeService: PlaceService, private router: Router,
         private alertify: AlertifyService) {}
 

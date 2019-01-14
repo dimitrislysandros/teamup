@@ -1,3 +1,48 @@
-<p>
-  place-detail works!
-</p>
+<div class="container mt-5">
+  <div class="tab-panel">
+    <a
+      href="https://maps.google.com/?q={{ place.latitude }},{{
+        place.longitude
+      }}"
+      ><h1>{{ place.name }}</h1></a
+    >
+    <p>{{ place.city }}, {{ place.country }}</p>
+    <tabset class="member-tabset">
+      <tab heading="General information">
+        <div class="row">
+          <div class="col-md-5">
+            <h6>Description:</h6>
+            <p *ngIf="place.public">The place is public!</p>
+            <p *ngIf="!place.public">Not a public field</p>
+
+            <h6>Type of field:</h6>
+            <p>{{ place.fieldType }}</p>
+
+            <h6>Size of field:</h6>
+            <p>{{ place.fieldSize }}</p>
+
+            <h6>Other info:</h6>
+            <p>{{ place.info }}</p>
+          </div>
+          <div class="col-md-7">
+            <app-map [places]="places"></app-map>
+          </div>
+         </div>
+      </tab>
+      <tab heading="Support">
+        <h6>Location</h6>
+        <a
+          href="https://maps.google.com/?q={{ place.latitude }},{{
+            place.longitude
+          }}"
+        >
+          <p>Go to map</p></a
+        >
+
+        <h6>How to book:</h6>
+        <p>{{ place.howToBook }}</p>
+      </tab>
+      <!-- <tab heading="Comments"> <p>comments</p> </tab> -->
+    </tabset>
+  </div>
+</div>

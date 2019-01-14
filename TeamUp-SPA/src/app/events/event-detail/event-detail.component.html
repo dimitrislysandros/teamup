@@ -1,7 +1,7 @@
 <div class="container text-center">
   <h1>{{ event.name }}</h1>
-  <p>The game will take place <a href="https://maps.google.com/?q={{this.event.place.latitude}},{{this.event.place.longitude}}">here</a>!</p>
-    {{event.place.latitude}}
+  <p>The game will take place in <a [routerLink]="['/places/', +event.placeId]">{{this.place?.name}}</a>!</p>
+    
   <hr>
 
   <h3>Participants</h3>

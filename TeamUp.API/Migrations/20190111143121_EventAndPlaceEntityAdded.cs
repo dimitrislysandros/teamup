@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeamUp.API.Migrations
 {
-    public partial class PlaceAndEventAdded : Migration
+    public partial class EventAndPlaceEntityAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,6 +51,29 @@ namespace TeamUp.API.Migrations
                 nullable: true);
 
             migrationBuilder.CreateTable(
+                name: "Photos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Url = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    DateAdded = table.Column<DateTime>(nullable: false),
+                    IsMain = table.Column<bool>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Photos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Photos_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Place",
                 columns: table => new
                 {
@@ -62,8 +85,8 @@ namespace TeamUp.API.Migrations
                     Address = table.Column<string>(nullable: true),
                     HowToBook = table.Column<string>(nullable: true),
                     Info = table.Column<string>(nullable: true),
-                    Latitude = table.Column<string>(nullable: true),
-                    Longitude = table.Column<string>(nullable: true),
+                    Latitude = table.Column<double>(nullable: false),
+                    Longitude = table.Column<double>(nullable: false),
                     FieldType = table.Column<string>(nullable: true),
                     FieldSize = table.Column<string>(nullable: true),
                     Public = table.Column<bool>(nullable: false)
@@ -82,7 +105,10 @@ namespace TeamUp.API.Migrations
                     Name = table.Column<string>(nullable: true),
                     EventDate = table.Column<DateTime>(nullable: false),
                     ChargePerPerson = table.Column<int>(nullable: false),
-                    PlaceId = table.Column<int>(nullable: false)
+                    PlaceId = table.Column<int>(nullable: false),
+                    PlaceName = table.Column<string>(nullable: true),
+                    PlaceLatitude = table.Column<double>(nullable: false),
+                    PlaceLongitude = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -91,36 +117,6 @@ namespace TeamUp.API.Migrations
                         name: "FK_Events_Place_PlaceId",
                         column: x => x.PlaceId,
                         principalTable: "Place",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Photos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Url = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    DateAdded = table.Column<DateTime>(nullable: false),
-                    IsMain = table.Column<bool>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
-                    PlaceId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Photos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Photos_Place_PlaceId",
-                        column: x => x.PlaceId,
-                        principalTable: "Place",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Photos_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -151,11 +147,6 @@ namespace TeamUp.API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Events_PlaceId",
                 table: "Events",
-                column: "PlaceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Photos_PlaceId",
-                table: "Photos",
                 column: "PlaceId");
 
             migrationBuilder.CreateIndex(

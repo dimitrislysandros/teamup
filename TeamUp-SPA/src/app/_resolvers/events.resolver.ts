@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { User } from '../_models/user';
 import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AlertifyService } from '../_services/alertify.service';
 import { catchError } from 'rxjs/operators';
@@ -7,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { EventService } from '../_services/event.service';
 
 @Injectable()
-export class PlaceListResolver implements Resolve<Event[]> {
+export class EventListResolver implements Resolve<Event[]> {
     constructor( private eventService: EventService, private router: Router,
         private alertify: AlertifyService) {}
 

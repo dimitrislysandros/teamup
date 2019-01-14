@@ -18,18 +18,20 @@
       </tabset>
     </div>
     <div class="col-md-7">
-      <h5>Places</h5>
+      <strong [routerLink]="['/places']" style="cursor: pointer;">Places</strong>
       <hr>
-        <ul *ngFor="let place of places" class="list-group">
+        <!-- <ul *ngFor="let place of places" class="list-group">
             <a
               class="list-group-item list-group-item-action"
-              [routerLink]="['/places/', place.id]"
+              [routerLink]="['/places/', +place.id]"
               > <strong>{{ place.name }}</strong>, {{ place.fieldSize }}
               <button class="btn btn-primary">
                 <i class="fa fa-plus"></i>
               </button>
             </a>
-          </ul>
+          </ul> -->
+
+          <app-map [places]="places"></app-map>
     </div>
   </div>
 </div>

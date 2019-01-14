@@ -11,13 +11,13 @@ namespace TeamUp.API.Dtos
         public string Address {get; set;}
         public string HowToBook {get; set;}
         public string Info {get; set;}
-        public string Latitude {get;set;}
-        public string Longitude {get;set;}
+        public double Latitude {get;set;}
+        public double Longitude {get;set;}
         public string FieldType {get;set;}
         public string FieldSize {get;set;}
         public bool Public {get;set;}
         public string PhotoUrl{get;set;}
-        public ICollection<PlacePhotosForDetailedDto> Photos {get;set;}
+        public ICollection<PlacePhotosForDetailedDto> PlacesPhotos {get;set;}
     
     }
 }
