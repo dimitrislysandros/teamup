@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace TeamUp.API.Models
 {
@@ -9,9 +10,8 @@ namespace TeamUp.API.Models
         public DateTime EventDate {get;set;}
         public int ChargePerPerson {get;set;}
         public Place Place {get;set;}
-        public int PlaceId{get;set;}
-        public string PlaceName {get;set;}
-        public double PlaceLatitude{get;set;}
-        public double PlaceLongitude{get;set;}
+        public int PlaceId {get;set;}
+        public ICollection<Connect> Player {get; set;}
+
     }
 }

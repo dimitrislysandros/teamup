@@ -25,14 +25,7 @@ namespace TeamUp.API.Helpers
                 });
             CreateMap<Photo, PhotosForDetailedDto>();
             CreateMap<Event, EventForListDto>();
-            CreateMap<Event, EventForDetailedDto>()
-                .ForMember(dest => dest.PlaceLatitude, opt => {
-                    opt.MapFrom(src => src.Place.Latitude);
-                })
-                .ForMember(dest => dest.PlaceLongitude, opt => {
-                    opt.MapFrom(src => src.Place.Longitude);
-                });
-                // ;
+            CreateMap<Event, EventForDetailedDto>();
             CreateMap<Place, PlaceForListDto>()
                 .ForMember(dest => dest.PhotoUrl, opt => {
                     opt.MapFrom(src => src.PlacesPhoto.FirstOrDefault(p => p.IsMain).Url);
@@ -42,6 +35,7 @@ namespace TeamUp.API.Helpers
                     opt.MapFrom(src => src.PlacesPhoto.FirstOrDefault(p => p.IsMain).Url);
                 });
             CreateMap<PlacesPhoto, PlacePhotosForDetailedDto>();
+            CreateMap<UserForUpdateDto, User>();
         }
     }
 }

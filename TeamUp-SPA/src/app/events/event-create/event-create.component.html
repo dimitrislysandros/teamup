@@ -1,3 +1,27 @@
-<p>
-  event-create works!
-</p>
+<form #createEventForm="ngForm" id="createEventForm" (ngSubmit)="createEvent()">
+  <label for="name">Event Name</label>
+  <textarea name="name" rows="1" class="form-control" type="text"> </textarea>
+  <label for="date">Date</label>
+  <dl-date-time-picker startView="day" maxView="year"> </dl-date-time-picker>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01"
+        >Select Place</label
+      >
+    </div>
+    <select class="custom-select" id="inputGroupSelect01">
+      <option *ngFor="let place of places">{{ place.name }}</option>
+    </select>
+  </div>
+
+  <h4>Charge per person</h4>
+  <input type="number" id="replyNumber" min="0"/>
+  <hr>
+  <button
+    class="btn btn-success btn-block"
+    (ngSubmit)="createEvent()"
+  >
+    Save Changes
+  </button>
+</form>

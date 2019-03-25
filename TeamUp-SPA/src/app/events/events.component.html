@@ -7,14 +7,15 @@
             <a
               class="list-group-item list-group-item-action"
               [routerLink]="['/events/', event.id]"
-              > <strong>{{ event?.name }}</strong>, {{ event.placeId }}
-              <button class="btn btn-primary">
+              > <strong>{{ event?.name }}</strong>
+              <button class="btn btn-primary pull-right">
                 <i class="fa fa-plus"></i>
               </button>
             </a>
           </ul>
         </tab>
-        <tab heading="Upcoming"> </tab> <tab heading="Create"> </tab>
+        <tab heading="Upcoming"> </tab> <tab heading="Create">
+          <app-event-create></app-event-create> </tab>
       </tabset>
     </div>
     <div class="col-md-7">

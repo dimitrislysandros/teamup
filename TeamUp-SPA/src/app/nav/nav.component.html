@@ -23,7 +23,7 @@
         </ul>
     
         <div *ngIf="loggedIn()" class="dropdown" dropdown>
-            <a class="nav-link dropdown-toggle text-light" dropdownToggle>Welcome {{authService.decodedToken.unique_name | titlecase}}</a>
+            <a class="nav-link dropdown-toggle text-light" dropdownToggle>Welcome, {{authService.decodedToken.unique_name | titlecase}}</a>
             
             <div class="dropdown-menu mt-2" *dropdownMenu>
               <a class="dropdown-item" [routerLink]="['/player/edit']"><i class= "fa fa-user"></i> Edit Profile </a>

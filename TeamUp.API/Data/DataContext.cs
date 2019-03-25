@@ -16,5 +16,21 @@ namespace TeamUp.API.Data
         public DbSet<Event> Events {get;set;}
         public DbSet<Place> Place {get;set;}
         public DbSet<PlacesPhoto> PlacesPhotos {get;set;}
+        public DbSet<Connect> Connections {get; set;}
+        protected override void OnModelCreating(ModelBuilder builder){
+            builder.Entity<Connect>()
+                .HasKey(k => new {k.UserId, k.EventId});
+            builder.Entity<Connect>()
+                .HasOne(u => u.Player)
+                .WithMany(u => u.Event)
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Connect>()
+                .HasOne(u => u.Event)
+                .WithMany(u => u.Player)
+                .HasForeignKey(u => u.EventId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

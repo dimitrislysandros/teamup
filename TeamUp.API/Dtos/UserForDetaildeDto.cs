@@ -18,5 +18,7 @@ namespace TeamUp.API.Dtos
         public string InterestedIn {get; set;}
         public string PhotoUrl{get;set;}
         public ICollection<PhotosForDetailedDto> Photos {get;set;}
+        
+    
     }
 }

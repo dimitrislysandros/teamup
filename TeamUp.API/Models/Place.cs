@@ -15,6 +15,7 @@ namespace TeamUp.API.Models
         public double Longitude {get;set;}
         public string FieldType {get;set;}
         public string FieldSize {get;set;}
+        public int PlayersPerTeam {get; set;}
         public bool Public {get;set;}
         public ICollection<PlacesPhoto> PlacesPhoto  {get; set;}
     

@@ -1,5 +1,12 @@
 <div class="container mt-4">
-  <div class="row"><h1>Your Profile</h1></div>
+  <div class="row">
+    <div class="col-sm-4"><h1>Your Profile</h1></div>
+    <div class="col-sm-8">
+      <div class="alert alert-info" *ngIf="editForm.dirty">
+        <b>Information:</b> You have made changes. Any unsaved changes will be lost!
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
@@ -27,10 +34,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <div class="button-group d-flex">
-            <button class="btn btn-primary">Add</button>
-            <button class="btn btn-success">Message</button>
-          </div>
+          <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
         </div>
       </div>
     </div>
@@ -38,11 +42,41 @@
       <div class="tab-panel">
         <tabset class="member-tabset">
           <tab heading="Edit Profile">
-            <form >
-                <h4>Interests</h4>
-                <textarea name="interests" class="form-control" [(ngModel)]="user.interests"> </textarea>
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+              <h4>Location</h4>
+              <label for="city">City</label>
+              <textarea
+                name="city"
+                rows="1"
+                class="form-control"
+                type="text"
+                [(ngModel)]="user.city"
+              >
+              </textarea>
+              <label for="country">Country</label>
+              <textarea
+                name="country"
+                rows="1"
+                class="form-control"
+                type="text"
+                [(ngModel)]="user.country"
+              >
+              </textarea>
+              <h4>Gender</h4>
+              <textarea
+                name="gender"
+                class="form-control"
+                [(ngModel)]="user.gender"
+              >
+              </textarea>
+              <h4>Interests</h4>
+              <textarea
+                name="interests"
+                class="form-control"
+                [(ngModel)]="user.interestedIn"
+              >
+              </textarea>
             </form>
-            
           </tab>
           <tab heading="Edit Photos"> <p>Photo Edit will go here</p> </tab>
         </tabset>

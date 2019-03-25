@@ -71,5 +71,11 @@ namespace TeamUp.API.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<Connect> GetConnect(int playerId, int eventId)
+        {
+            return await _context.Connections.FirstOrDefaultAsync(u => 
+                u.UserId == playerId && u.EventId==eventId);
+        }
     }
 }

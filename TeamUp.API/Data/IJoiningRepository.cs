@@ -15,5 +15,6 @@ namespace TeamUp.API.Data
          Task<User> GetUser(int id);
          Task<Event> GetEvent(int id);
          Task<Place> GetPlace(int id);
+         Task<Connect> GetConnect (int playerId, int eventId);
     }
 }

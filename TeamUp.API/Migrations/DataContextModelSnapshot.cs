@@ -14,7 +14,20 @@ namespace TeamUp.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085");
+
+            modelBuilder.Entity("TeamUp.API.Models.Connect", b =>
+                {
+                    b.Property<int>("UserId");
+
+                    b.Property<int>("EventId");
+
+                    b.HasKey("UserId", "EventId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Connections");
+                });
 
             modelBuilder.Entity("TeamUp.API.Models.Event", b =>
                 {
@@ -28,12 +41,6 @@ namespace TeamUp.API.Migrations
                     b.Property<string>("Name");
 
                     b.Property<int>("PlaceId");
-
-                    b.Property<double>("PlaceLatitude");
-
-                    b.Property<double>("PlaceLongitude");
-
-                    b.Property<string>("PlaceName");
 
                     b.HasKey("Id");
 
@@ -88,6 +95,8 @@ namespace TeamUp.API.Migrations
                     b.Property<double>("Longitude");
 
                     b.Property<string>("Name");
+
+                    b.Property<int>("PlayersPerTeam");
 
                     b.Property<bool>("Public");
 
@@ -160,6 +169,19 @@ namespace TeamUp.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Values");
+                });
+
+            modelBuilder.Entity("TeamUp.API.Models.Connect", b =>
+                {
+                    b.HasOne("TeamUp.API.Models.Event", "Event")
+                        .WithMany("Player")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("TeamUp.API.Models.User", "Player")
+                        .WithMany("Event")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("TeamUp.API.Models.Event", b =>

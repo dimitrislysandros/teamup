@@ -88,7 +88,7 @@ namespace TeamUp.API
             }
 
             //app.UseHttpsRedirection();
-            // seeder.SeedPlaces();
+            //  seeder.SeedPlaces();
             // seeder.SeedEvents();
             // seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
         this.alertify.success('Registeration successfull!');
       }, error => {
         this.alertify.error(error);
+        console.log(error);
       });
   }
 

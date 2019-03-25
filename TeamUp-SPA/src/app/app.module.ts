@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { AgmCoreModule } from '@agm/core';
+import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -39,6 +40,7 @@ import { PlaceDetailResolver } from './_resolvers/place-detail.resolver';
 import { EventListResolver } from './_resolvers/events.resolver';
 import { PlaceListResolver } from './_resolvers/place-list.resolver';
 import { MapComponent } from './map/map.component';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -70,6 +72,9 @@ export function tokenGetter() {
        }),
       HttpClientModule,
       FormsModule,
+      DlDateTimePickerDateModule,
+      // OwlDateTimeModule,
+      // OwlNativeDateTimeModule,
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
@@ -96,7 +101,8 @@ export function tokenGetter() {
       PlaceService,
       MemberEditResolver,
       PlaceDetailResolver,
-      PlaceListResolver
+      PlaceListResolver,
+      PreventUnsavedChanges
    ],
    bootstrap: [
       AppComponent
