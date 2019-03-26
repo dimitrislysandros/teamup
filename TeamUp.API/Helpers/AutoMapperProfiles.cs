@@ -36,6 +36,8 @@ namespace TeamUp.API.Helpers
                 });
             CreateMap<PlacesPhoto, PlacePhotosForDetailedDto>();
             CreateMap<UserForUpdateDto, User>();
+            CreateMap<Photo, PhotoForReturnDto>();
+            CreateMap<PhotoForCreationDto, Photo>();
         }
     }
 }
