@@ -26,9 +26,10 @@ namespace TeamUp.API.Controllers
 
         public PhotosController(IJoiningRepository repo, IMapper mapper, 
             IOptions<CloudinarySettings> cloudinaryConfig) {
-            _repo = repo;
-            _mapper = mapper;
+            
             _cloudinaryConfig = cloudinaryConfig;
+            _mapper = mapper;
+            _repo = repo;
 
             Account acc = new Account(
                 _cloudinaryConfig.Value.CloudName,
