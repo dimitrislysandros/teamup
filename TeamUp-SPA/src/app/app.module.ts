@@ -8,6 +8,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { AgmCoreModule } from '@agm/core';
 import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -41,6 +42,8 @@ import { EventListResolver } from './_resolvers/events.resolver';
 import { PlaceListResolver } from './_resolvers/place-list.resolver';
 import { MapComponent } from './map/map.component';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -63,7 +66,8 @@ export function tokenGetter() {
       PlaceListComponent,
       PlaceDetailComponent,
       MemberEditComponent,
-      MapComponent
+      MapComponent,
+      PhotoEditorComponent,
    ],
    imports: [
       BrowserModule,
@@ -79,6 +83,7 @@ export function tokenGetter() {
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
+      FileUploadModule,
       JwtModule.forRoot({
          config: {
             tokenGetter: tokenGetter,
