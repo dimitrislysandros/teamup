@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TeamUp.API.Models;
@@ -81,6 +82,13 @@ namespace TeamUp.API.Data
         public async Task<Photo> GetPhoto(int id)
         {
             var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id ==id);
+
+            return photo;
+        }
+
+        public async Task<Photo> GetMainPhotoForUser(int userId)
+        {
+            var photo = await _context.Photos.Where(u => u.UserId == userId ).FirstOrDefaultAsync(p => p.IsMain);
 
             return photo;
         }

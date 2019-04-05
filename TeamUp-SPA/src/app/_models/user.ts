@@ -7,6 +7,7 @@ export interface User {
     gender: string;
     age: number;
     created: Date;
+    interests: string;
     lastActive: Date;
     country: string;
     city: string;

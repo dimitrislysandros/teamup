@@ -17,5 +17,6 @@ namespace TeamUp.API.Data
          Task<Place> GetPlace(int id);
          Task<Connect> GetConnect (int playerId, int eventId);
          Task<Photo> GetPhoto(int id);
+         Task<Photo> GetMainPhotoForUser(int userId);
     }
 }
