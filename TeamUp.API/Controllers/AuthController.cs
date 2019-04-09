@@ -37,14 +37,25 @@ namespace TeamUp.API.Controllers
             if (await _repo.UserExists(userForRegisterDto.Username))
                 return BadRequest("Username already exists");
 
-            var userToCreate = new User
-            {
-                Username = userForRegisterDto.Username
-            };
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
-            return StatusCode(201);
+            var userToReturn = _mapper.Map<UserForDetaildeDto>(createdUser);
+
+            return CreatedAtRoute("GetUser", new {Controller= "Users", id = createdUser.Id}, userToReturn);
+        }
+
+        [HttpPost("eventcreate")]
+        public async Task<IActionResult> CreateEvent(EventForCreateDto eventForCreateDto)
+        {
+            var eventToCreate = _mapper.Map<Event>(eventForCreateDto);
+            
+            var createdEvent = await _repo.CreateEvent(eventToCreate);
+
+            var eventToReturn = _mapper.Map<EventForDetailedDto>(createdEvent);
+
+            return CreatedAtRoute("GetEvent", new {Controller="Events", id = createdEvent.Id}, eventToReturn);
         }
 
         [HttpPost("login")]

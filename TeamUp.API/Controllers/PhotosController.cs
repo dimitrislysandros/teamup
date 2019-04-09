@@ -104,6 +104,7 @@ namespace TeamUp.API.Controllers
                 return Unauthorized();
 
             var user = await _repo.GetUser(userId);
+            
             if(!user.Photos.Any(p => p.Id==id))
                 return Unauthorized();
 

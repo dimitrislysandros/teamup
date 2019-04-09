@@ -1,25 +1,100 @@
-<form #createEventForm="ngForm" id="createEventForm" (ngSubmit)="createEvent()">
-  <label for="name">Event Name</label>
-  <textarea name="name" rows="1" class="form-control" type="text"> </textarea>
-  <label for="date">Date</label>
-  <dl-date-time-picker startView="day" maxView="year"> </dl-date-time-picker>
+<form [formGroup]="registerForm" (ngSubmit)="createEvent()">
+  <div class="form-group">
+    <label for="eventName">Create new event</label>
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01"
-        >Select Place</label
-      >
-    </div>
-    <select class="custom-select" id="inputGroupSelect01">
-      <option *ngFor="let place of places">{{ place.name }}</option>
-    </select>
+    <input
+      type="text"
+      [ngClass]="{
+        'is-invalid':
+          registerForm.get('name').errors && registerForm.get('name').touched
+      }"
+      class="form-control"
+      formControlName="name"
+      placeholder="Name your event"
+    />
+    <div class="invalid-feedback">Please choose a name</div>
   </div>
 
-  <h4>Charge per person</h4>
-  <input type="number" id="replyNumber" min="0"/>
-  <hr>
+  <div class="form-group">
+    <input
+      [ngClass]="{
+        'is-invalid':
+          registerForm.get('date').errors && registerForm.get('date').touched
+      }"
+      class="form-control"
+      placeholder="When is the event?"
+      formControlName="eventDate"
+      type="text"
+      bsDatepicker
+    />
+
+    <div
+      class="invalid-feedback"
+      *ngIf="
+        registerForm.get('date').touched &&
+        registerForm.get('date').hasError('required')
+      "
+    >
+      Date of Birth is required
+    </div>
+  </div>
+
+  <!-- 
+  <label for="date">Date</label>
+  <dl-date-time-picker
+    class="form-group"
+    name="eventDate"
+    id="date"
+    startView="day"
+    minView="hour"
+    maxView="year"
+    [(ngModel)]="date"
+  >
+  </dl-date-time-picker> -->
+  <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01"
+          >Select Place</label
+        >
+      </div>
+      <select
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('place').errors &&
+            registerForm.get('place').touched
+        }"
+        class="form-control"
+        placeholder="Select Place"
+        formControlName="place"
+      >
+        <option *ngFor="let place of places">{{ place.name }}</option>
+      </select>
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf="
+        registerForm.get('place').touched &&
+        registerForm.get('place').hasError('required')
+      "
+    >
+      City is required
+    </div>
+  </div>
+  <h4>Price per person</h4>
+  <input
+    [ngClass]="{
+      'is-invalid':
+        registerForm.get('charge').errors && registerForm.get('charge').touched
+    }"
+    class="form-control"
+    placeholder="Charge"
+    formControlName="charge"
+  />
+  <hr />
   <button
     class="btn btn-success btn-block"
+    [disabled]="!registerForm.valid"
     (ngSubmit)="createEvent()"
   >
     Save Changes

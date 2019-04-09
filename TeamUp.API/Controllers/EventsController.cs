@@ -31,7 +31,7 @@ namespace TeamUp.API.Controllers
             return Ok(eventsToReturn);
         }
 
-        [HttpGetAttribute("{id}")]
+        [HttpGetAttribute("{id}", Name="GetEvent")]
         public async Task<IActionResult> GetEvent(int id)
         {
             var eventGet = await _repo.GetEvent(id);

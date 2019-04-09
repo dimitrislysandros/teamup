@@ -25,4 +25,8 @@ export class EventService {
   getEvent(id): Observable<Event> {
     return this.http.get<Event>(this.baseUrl + 'events/' + id, httpOptions);
   }
+
+  createEvent(event: Event) {
+    return this.http.post(this.baseUrl + 'eventcreate', event);
+  }
 }

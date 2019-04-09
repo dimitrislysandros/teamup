@@ -69,5 +69,13 @@ namespace TeamUp.API.Data
 
             return false;
         }
+
+        public async Task<Event> CreateEvent(Event eventc)
+        {
+            await _context.Events.AddAsync(eventc);
+            await _context.SaveChangesAsync();
+
+            return eventc;
+        }
     }
 }

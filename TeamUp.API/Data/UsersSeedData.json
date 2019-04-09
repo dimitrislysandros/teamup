@@ -4,7 +4,7 @@
       "Username": "Jim",
       "City": "Toulouse",
       "Country": "France",
-      "DateOfBirth": "1995-09-19",
+      "DateOfBirth": "1992-03-02",
       "Password": "password",
       "Created": "2017-04-08",
       "Gender": "male",
@@ -14,6 +14,16 @@
         {
           "url": "https://randomuser.me/api/portraits/men/14.jpg",
           "isMain": true,
+          "description": "Occaecat cillum mollit sint minim in ad cupidatat aliqua eu sint incididunt."
+        },
+        {
+          "url": "https://randomuser.me/api/portraits/men/3.jpg",
+          "isMain": false,
+          "description": "Occaecat cillum mollit sint minim in ad cupidatat aliqua eu sint incididunt."
+        },
+        {
+          "url": "https://randomuser.me/api/portraits/men/15.jpg",
+          "isMain": false,
           "description": "Occaecat cillum mollit sint minim in ad cupidatat aliqua eu sint incididunt."
         }
       ]
@@ -31,7 +41,7 @@
       "InterestedIn": "A lot of things",
       "Photos": [
         {
-          "url": "https://randomuser.me/api/portraits/men/14.jpg",
+          "url": "https://randomuser.me/api/portraits/men/2.jpg",
           "isMain": true,
           "description": "Occaecat cillum mollit sint minim in ad cupidatat aliqua eu sint incididunt."
         }
@@ -50,7 +60,7 @@
       "InterestedIn": "A lot of things",
       "Photos": [
         {
-          "url": "https://randomuser.me/api/portraits/men/14.jpg",
+          "url": "https://randomuser.me/api/portraits/men/1.jpg",
           "isMain": true,
           "description": "Occaecat cillum mollit sint minim in ad cupidatat aliqua eu sint incididunt."
         }
@@ -85,7 +95,7 @@
       "InterestedIn": "A lot of things",
       "Photos": [
         {
-          "url": "https://randomuser.me/api/portraits/men/14.jpg",
+          "url": "https://randomuser.me/api/portraits/men/67.jpg",
           "isMain": true,
           "description": "Occaecat cillum mollit sint minim in ad cupidatat aliqua eu sint incididunt."
         }

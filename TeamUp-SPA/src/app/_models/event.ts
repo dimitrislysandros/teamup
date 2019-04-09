@@ -1,5 +1,4 @@
 import { Place } from './place';
-import { User } from './user';
 
 export interface Event {
     id: number;
@@ -9,6 +8,4 @@ export interface Event {
     placeId: number;
     place: Place;
     placeName: string;
-    placeLatitude: number;
-    placeLongitude: number;
 }
