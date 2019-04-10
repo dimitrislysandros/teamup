@@ -4,6 +4,7 @@
       <tabset class="member-tabset">
         <tab heading="Search">
           <ul *ngFor="let event of events" class="list-group">
+              
             <a
               class="list-group-item list-group-item-action"
               [routerLink]="['/events/', event.id]"
@@ -13,6 +14,8 @@
               </button>
             </a>
           </ul>
+          <br>
+          <pagination [totalItems]="arrayLength" (pageChanged)="pageChanged($event)"></pagination>
         </tab>
         <tab heading="Upcoming"> </tab> <tab heading="Create">
           <app-event-create></app-event-create> </tab>

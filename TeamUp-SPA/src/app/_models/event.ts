@@ -8,4 +8,5 @@ export interface Event {
     placeId: number;
     place: Place;
     placeName: string;
+    time: string;
 }

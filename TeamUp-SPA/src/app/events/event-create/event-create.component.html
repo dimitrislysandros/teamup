@@ -23,11 +23,12 @@
       }"
       class="form-control"
       placeholder="When is the event?"
-      formControlName="eventDate"
+      formControlName="date"
       type="text"
       bsDatepicker
+      [minDate]="minDate"
     />
-
+    <timepicker formControlName="time" *ngIf="registerForm.value.date"></timepicker>
     <div
       class="invalid-feedback"
       *ngIf="
@@ -35,7 +36,7 @@
         registerForm.get('date').hasError('required')
       "
     >
-      Date of Birth is required
+      The date for the event is required, dude
     </div>
   </div>
 
@@ -68,7 +69,7 @@
         placeholder="Select Place"
         formControlName="place"
       >
-        <option *ngFor="let place of places">{{ place.name }}</option>
+        <option *ngFor="let place of places" [ngValue]="place">{{ this.place.name }}</option>
       </select>
     </div>
     <div
@@ -77,8 +78,9 @@
         registerForm.get('place').touched &&
         registerForm.get('place').hasError('required')
       "
+      
     >
-      City is required
+      Place is required
     </div>
   </div>
   <h4>Price per person</h4>
@@ -91,6 +93,7 @@
     placeholder="Charge"
     formControlName="charge"
   />
+
   <hr />
   <button
     class="btn btn-success btn-block"

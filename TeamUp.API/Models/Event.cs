@@ -8,6 +8,7 @@ namespace TeamUp.API.Models
         public int Id {get; set;}
         public string Name {get; set;}
         public DateTime EventDate {get;set;}
+        public string EvnetTime {get; set;}
         public int ChargePerPerson {get;set;}
         public Place Place {get;set;}
         public int PlaceId {get;set;}

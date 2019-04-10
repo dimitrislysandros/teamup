@@ -27,6 +27,6 @@ export class EventService {
   }
 
   createEvent(event: Event) {
-    return this.http.post(this.baseUrl + 'eventcreate', event);
+    return this.http.post(this.baseUrl + 'auth/eventcreate', event, httpOptions);
   }
 }

@@ -4,6 +4,7 @@ import { EventService } from '../_services/event.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Place } from '../_models/place';
 import { PlaceService } from '../_services/place.service';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 @Component({
   selector: 'app-events',
@@ -14,6 +15,8 @@ export class EventsComponent implements OnInit {
   events: Event[];
   eventSelected: Event;
   eventToShow: Event;
+  returnedArray: Event [];
+  arrayLength: number;
 
   places: Place[];
   @Output() clicked = new EventEmitter<Event>();
@@ -33,6 +36,8 @@ export class EventsComponent implements OnInit {
     this.eventService.getEvents().subscribe(
       (events: Event[]) => {
         this.events = events;
+        this.returnedArray = this.events.slice(0, 10);
+        this.arrayLength = events.length;
       },
       error => {
         this.alertify.error(error);
@@ -68,5 +73,12 @@ export class EventsComponent implements OnInit {
       }
     );
     console.log('the event is ' + this.eventToShow);
+  }
+
+
+  pageChanged(event: PageChangedEvent): void {
+    const startItem = (event.page - 1) * event.itemsPerPage;
+    const endItem = event.page * event.itemsPerPage;
+    this.returnedArray = this.events.slice(startItem, endItem);
   }
 }

@@ -6,6 +6,7 @@ import { Event } from 'src/app/_models/event';
 import { EventService } from 'src/app/_services/event.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Time } from 'ngx-bootstrap/timepicker/timepicker.models';
 
 @Component({
   selector: 'app-event-create',
@@ -17,20 +18,28 @@ export class EventCreateComponent implements OnInit {
   places: Place[];
   public event: Event;
   registerForm: FormGroup;
+  minDate: Date;
+  time: Time;
+  dateSelected = false;
 
   constructor( private placeService: PlaceService, private alertify: AlertifyService,
-       private router: Router, private fb: FormBuilder, private eventService: EventService) {}
+       private router: Router, private fb: FormBuilder, private eventService: EventService) {
+       }
 
   ngOnInit() {
-    this.loadPlaces();
+    this.minDate = new Date();
+    this.minDate.setDate(this.minDate.getDate());
     this.createRegisterForm();
+    this.loadPlaces();
   }
   createRegisterForm() {
     this.registerForm = this.fb.group({
       name: [''],
       date: [null, Validators.required],
       place: [null, Validators.required],
-      charge: [0, Validators.required],
+      placeId: [null, Validators.required],
+      charge: ['', Validators.required],
+      time: [null, Validators.required]
     });
   }
 
@@ -45,19 +54,19 @@ export class EventCreateComponent implements OnInit {
     );
   }
 
+  enableTime() {
+    this.dateSelected = true;
+  }
   createEvent() {
-    // this.event. = this.eventName;
-    // this.event.name = this.eventName;
-    // this.event.eventDate = this.date;
-    // this.event.place = this.place;
-    // this.event.placeId = this.place.id;
-    // this.event.chargePerPerson = this.charge;
-    // this.eventService.createEvent(this.eventToCreate).subscribe(() => {
-    //   this.alertify.success('Event created');
-    // }, error => {
-    //   this.alertify.error(error);
-    // }, () => {
-    //   this.router.navigate(['/events']);
-    // });
+    if (this.registerForm.valid) {
+      this.event = Object.assign({}, this.registerForm.value);
+      this.eventService.createEvent(this.event).subscribe(() => {
+        this.alertify.success('Event created');
+      }, error => {
+        this.alertify.error(error);
+      }, () => {
+        this.router.navigate(['/events']);
+      });
+    }
   }
 }
