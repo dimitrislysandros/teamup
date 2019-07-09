@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TeamUp.API.Data;
 using TeamUp.API.Dtos;
+using TeamUp.API.Helpers;
 using TeamUp.API.Models;
 
 namespace TeamUp.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

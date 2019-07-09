@@ -9,6 +9,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { AgmCoreModule } from '@agm/core';
 import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -68,6 +69,7 @@ export function tokenGetter() {
       MemberEditComponent,
       MapComponent,
       PhotoEditorComponent,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,
